@@ -1,0 +1,47 @@
+.nav-item{
+    border-bottom: solid 7px #868e96;
+    margin-bottom: -8px;
+}
+
+.active{
+        border-bottom: solid 7px #db076b;
+}
+
+.nav-item.mx-2:hover {
+    border-bottom: solid 7px #db076b;
+    background-color: #eee;
+    border-radius: 1rem 1rem 0 0;
+}
+
+.slide-nav{
+    background-color: #eee;
+    color: #db076b;
+    /* height: 200px; */
+}
+
+.arrow-icon{ 
+    font-size: 3rem;
+    color: #db076b;
+}
+
+.arrow-icon:hover{
+    color: #868e96;
+}
+
+
+.btn-custom{
+    color: #db076b;
+    border-color:#db076b;
+}
+
+.btn-custom:hover{
+    background-color: #db076b;
+}
+
+a.text-muted i.bi{
+    font-size: 1.3rem;;
+}
+
+a.text-muted i.bi:hover{
+    color: #db076b;
+}
