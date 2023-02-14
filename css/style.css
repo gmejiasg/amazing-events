@@ -45,3 +45,7 @@ a.text-muted i.bi{
 a.text-muted i.bi:hover{
     color: #db076b;
 }
+
+th[colspan]{
+    background-color: #b6b8ba;
+}

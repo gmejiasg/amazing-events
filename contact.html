@@ -62,18 +62,24 @@
     <div class="col">
       <form action="./showdata.html" method="GET">
         <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Name:</label>
-          <input type="name" class="form-control" id="exampleFormControlInput1">
+          <label class="w-100">
+            Name:
+            <input type="name" class="form-control" name="name">
+          </label>
         </div>
         <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Email:</label>
-          <input type="email" class="form-control" id="exampleFormControlInput1">
+          <label class="w-100">
+            Email:
+            <input type="email" class="form-control" name="email">
+          </label>
         </div>
         <div class="mb-3">
-          <label for="exampleFormControlTextarea1" class="form-label">Mensagge:</label>
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+          <label class="w-100">
+            Mensagge:
+            <textarea class="form-control" rows="3" name="mensagge"></textarea>
+          </label>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-outline-danger btn-custom w-100">Submit</button>
       </form>
     </div>
   </main>
