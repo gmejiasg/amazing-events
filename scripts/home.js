@@ -14,7 +14,7 @@ const crearTarjetasEventos = (listaEventos) => {
       </div>
       <div class="card-footer d-flex justify-content-between align-items-center">
       <small class="text-muted">Price: ${ev.price}</small>
-      <a href="./details.html" class="btn btn-outline-danger btn-custom" >see more...</a>
+      <a href="./details.html?id=${ev._id}" class="btn btn-outline-danger btn-custom" >see more...</a>
       </div>
       </div>
       </div>`;
@@ -30,19 +30,25 @@ const crearTarjetasEventos = (listaEventos) => {
 
 crearTarjetasEventos(events);
 
-const contextCategory = document.getElementById('categoryBox');
 
-let categoriesList = new Set(events.map((even)=> even.category));
+const crearCategoryList = (listaEventos) => {
+  const contextCategory = document.getElementById('categoryBox');
+  
+  let categoriesList = new Set(listaEventos.map((even)=> even.category));
+  
+  let categoryBox="";
+  categoriesList.forEach((category) => {
+    categoryBox += `<label>
+    ${category}
+    <input type="checkbox" name="category" value="${category}">
+    </label>`
+  });
+  
+  contextCategory.innerHTML=categoryBox;
 
-let categoryBox="";
-categoriesList.forEach((category) => {
-  categoryBox += `<label>
-  ${category}
-  <input type="checkbox" name="category" value="${category}">
-  </label>`
-});
+}
 
-contextCategory.innerHTML=categoryBox;
+crearCategoryList(events);
 
 let formSearch = document.getElementById('form-search');
 
