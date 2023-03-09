@@ -10,6 +10,8 @@ const events = data.events.filter( event => {
 });
 
 
+
+
 let contentEvents="";
 
 events.forEach((ev)=>{
@@ -31,4 +33,16 @@ events.forEach((ev)=>{
 
 context.innerHTML=contentEvents;
 
+const contextCategory = document.getElementById('categoryBox');
 
+let categoriesList = new Set(events.map((even)=> even.category));
+
+let categoryBox="";
+categoriesList.forEach((category) => {
+  categoryBox += `<label>
+  ${category}
+  <input type="checkbox" name="category[${category}]">
+  </label>`
+});
+
+contextCategory.innerHTML=categoryBox;
