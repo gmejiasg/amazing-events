@@ -7,4 +7,4 @@ const filterUpcoming = (data) => {
           });
 }
 
-cargarDatos(filterUpcoming);
+imprirEventos(filterUpcoming);

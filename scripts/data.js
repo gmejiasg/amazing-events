@@ -2,17 +2,20 @@ const urlApi = `https://mindhub-xj03.onrender.com/api/amazing`;
 let events = []
 
 const cargarDatos = (filtroEvent) =>{
-  fetch(urlApi)
+  return fetch(urlApi)
       .then(response => response.json())
       .then(datos => {
         events = filtroEvent(datos);
-        crearCategoryList(events);
-        crearTarjetasEventos(events)
       })
       .catch(error=> console.log(error))
-
 }
 
+const imprirEventos = (filtroEvent) => {
+  cargarDatos(filtroEvent).then(()=>{
+    crearCategoryList(events);
+    crearTarjetasEventos(events)
+  });
+};
 
 
 const crearCategoryList = (listaEventos) => {
@@ -60,39 +63,40 @@ const crearTarjetasEventos = (listaEventos) => {
   context.innerHTML=contentEvents;
 }
 
-
-let formSearch = document.getElementById('form-search');
-
-formSearch.addEventListener("submit", (event)=> { 
-  event.preventDefault();
-
-  let evetFilter = [];
-  let filtros = false;
-  const formData = new FormData(event.target);
-
+let formSearch = document.getElementById('form-search')
+if (formSearch) {
+  formSearch.addEventListener("submit", (event)=> { 
+    event.preventDefault();
   
-  formData.getAll("category").forEach((category)=>{
-    filtros=true
-    evetFilter= [...evetFilter, ...events.filter( event =>  event.category.includes(category) )];
-  })
-
-  if(formData.get('filtro')){
-    let find=formData.get('filtro').toLowerCase();
-    if (!filtros) {
-      evetFilter =[...events.filter( event =>  event.name.toLowerCase().includes(find) || event.description.toLowerCase().includes(find) )];
-    } else {
-      evetFilter =[...evetFilter.filter( event =>  event.name.toLowerCase().includes(find)) || event.description.toLowerCase().includes(find)];
+    let evetFilter = [];
+    let filtros = false;
+    const formData = new FormData(event.target);
+  
+    
+    formData.getAll("category").forEach((category)=>{
+      filtros=true
+      evetFilter= [...evetFilter, ...events.filter( event =>  event.category.includes(category) )];
+    })
+  
+    if(formData.get('filtro')){
+      let find=formData.get('filtro').toLowerCase();
+      if (!filtros) {
+        evetFilter =[...events.filter( event =>  event.name.toLowerCase().includes(find) || event.description.toLowerCase().includes(find) )];
+      } else {
+        evetFilter =[...evetFilter.filter( event =>  event.name.toLowerCase().includes(find)) || event.description.toLowerCase().includes(find)];
+      }
+      filtros=true
     }
-    filtros=true
-  }
+  
+    if (filtros) {
+      crearTarjetasEventos(evetFilter);
+    } else {
+      crearTarjetasEventos(events);
+    }
+  
+  });
+};
 
-  if (filtros) {
-    crearTarjetasEventos(evetFilter);
-  } else {
-    crearTarjetasEventos(events);
-  }
-
-})
 
 
 

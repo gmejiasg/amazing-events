@@ -3,5 +3,5 @@ const filterEvents = (data) => {
   return data.events;
 }
 
-cargarDatos(filterEvents);
+imprirEventos(filterEvents);
 

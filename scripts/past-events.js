@@ -7,5 +7,5 @@ const filterPast = (data) => {
           });
 }
 
-cargarDatos(filterPast);
+imprirEventos(filterPast);
 
