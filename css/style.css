@@ -49,3 +49,14 @@ a.text-muted i.bi:hover{
 th[colspan]{
     background-color: #b6b8ba;
 }
+
+.verEvento{
+    height: 300px;
+    overflow: hidden;
+}
+
+.verEvento > img{
+    width: 100%;
+    top: -50%;
+    position: relative;
+}
